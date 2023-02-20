@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+
+
+    <link rel="stylesheet" href="C:\Users\verno\Desktop\fly_landing_app\fly_landing_app\src\css\main.css">
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loading_text">
+            LOADING
+        </div>
+    </div>
+
+    <script src="C:\Users\verno\Desktop\fly_landing_app\fly_landing_app\src\js\main.js"></script>
+    <div class="title">
+        <ul>
+            <li style="transform: rotate(-360deg);">
+                <input id="c1" type="button">
+                <label for="c1" style="transform: rotate(360deg);">HOME</label> 
+                // Hyperlink to page about the app 
+            </li>
+            <li style="transform: rotate(-360deg);">
+                <input id="c2" type="button">
+                <label for="c2" style="transform: rotate(360deg);">SOCIAL</label>
+                // Hyperlink to social media pages
+             
+            </li>
+            <li style="transform: rotate(-360deg);">
+                <input id="c3" type="button">
+                <label for="c3" style="transform: rotate(360deg);">CONTACT<a href="C:/Users/verno/Desktop/fly_landing_app/fly_landing_app/src/js/contact.html"></a></label>
+            </li>
+            // Hyperlink to contact form 
+            <li style="transform: rotate(-360deg);">
+                <input id="c4" type="button">
+                <label for="c4" style="transform: rotate(360deg);">ABOUT US</label>
+            </li>
+            // Hyperlink to about us (founders) page 
+
+        </ul>
+        <button><img src="C:\Users\verno\Desktop\fly_landing_app\fly_landing_app\images\flylogo.PNG" height="400" width="400" /> </button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        var nbOptions = 8;
+        var angleStart = -360;
+
+        // jquery rotate animation
+        function rotate(li, d) {
+            $({ d: angleStart }).animate({ d: d }, {
+                step: function (now) {
+                    $(li)
+                        .css({ transform: 'rotate(' + now + 'deg)' })
+                        .find('label')
+                        .css({ transform: 'rotate(' + (-now) + 'deg)' });
+                }, duration: 0
+            });
+        }
+
+        // show / hide the options
+        function toggleOptions(s) {
+            $(s).toggleClass('open');
+            var li = $(s).find('li');
+            var deg = $(s).hasClass('half') ? 180 / (li.length - 1) : 360 / li.length;
+            for (var i = 0; i < li.length; i++) {
+                var d = $(s).hasClass('half') ? (i * deg) - 90 : i * deg;
+                $(s).hasClass('open') ? rotate(li[i], d) : rotate(li[i], angleStart);
+            }
+        }
+
+        $('.title button').click(function (e) {
+            toggleOptions($(this).parent());
+        });
+
+        setTimeout(function () { toggleOptions('.title'); }, 100);
+
+
+
+
+    </script>
+
+</body>
+</html>
+
+
